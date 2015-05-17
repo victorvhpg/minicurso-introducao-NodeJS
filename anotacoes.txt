@@ -1,0 +1,174 @@
+1-Conhecendo Node.js
+	-JavaScript
+	-O que é Node.js /historia
+	-Onde é utilizado
+	-Modelo assincrono orientado a eventos 
+	-io.js fork com as mais recentes atualizações
+	 quem esta utilizando Node.js?    
+
+2-Instalando Node.js
+    objeto  process
+	hello world
+
+3-Conhecendo Sistema de Modulos do Node.js 
+	-tipos existentes
+	-core,criado,instalado
+	-alguns precisam ser compilados
+	-sistema de  versão
+	-Importancia de conhecer GIT
+
+4-NPM
+	-oque  é
+	-instalando modulos do NPM
+	-package.json
+	-gerenciando dependencias
+
+5- Criação de modulos 
+	-padrao  CommonJS
+	-criando modulos
+
+6- Eventos
+	-usando/criando eventos 
+
+7 -FileSystem	
+	manipulando arquivos
+
+8- Promises 
+	-O que são Promises
+	-evitando callbacks com Promises
+
+9-Modulo http
+   -criando servidor WEB
+   -servindo  paginas web
+
+10-Express
+	-rotas
+	-validacao
+	-views
+
+11-Aplicações REST
+	-o que é
+	-criando API RESTfull 
+	-como consumir uma API RESTfull
+
+12- Acesso a Base de Dados
+	-relacional (MySQL)
+	-NoSQL (MongoDB)   
+
+13- WebSocket
+	-protocolo WebSocket
+	-programacao em tempo real (cliente/servidor)
+
+
+14-App
+	desenvolvimento app que 
+	consome API RESTfull Node.js
+	utiliza WebSocket para alguma notificacao?
+	
+	
+	//=================================================================================================
+//==================================================================================================
+	-Conhecendo Node.js
+//=================================================================================================
+//==================================================================================================
+-Instalando Node.js
+//=================================================================================================
+//==================================================================================================
+-Conhecendo Sistema de Módulos do Node.js
+
+CommonJS
+
+require ->   retorna  o que  tiver   em .exports
+module.exports = {  google: 33}
+
+exports.google = 33
+
+//=================================================================================================
+//==================================================================================================
+-NPM
+
+• npm install nome_do_módulo : instala um módulo no projeto.
+• npm install -g nome_do_módulo : instala um módulo global.
+• npm install nome_do_módulo --save : instala o módulo no projeto,
+atualizando o package.json na lista de dependências.
+• npm list : lista todos os módulos do projeto.
+• npm list -g : lista todos os módulos globais.
+• npm remove nome_do_módulo : desinstala um módulo do projeto.
+
+• npm remove -g nome_do_módulo : desinstala um módulo global.
+• npm update nome_do_módulo : atualiza a versão do módulo.
+• npm update -g nome_do_módulo : atualiza a versão do módulo global.
+• npm -v : exibe a versão atual do npm.
+• npm adduser nome_do_usuário : cria uma conta no npm, através do site
+(https://npmjs.org) .
+• npm whoami : exibe detalhes do seu perfil público npm (é necessário criar
+uma conta antes).
+• npm publish : publica um módulo no site do npm, é necessário ter uma
+conta antes.
+
+~ que faz atualizações a nível de patch (1.0.x)
+ Patch releases: 1.0 or 1.0.x or ~1.0.4
+Minor releases: 1 or 1.x or ^1.0.4
+Major releases: * or x
+//=================================================================================================
+//==================================================================================================
+-Importância de saber utilizar sistema de controle de versão - GIT
+//=================================================================================================
+//==================================================================================================
+-Criação de Módulos
+//=================================================================================================
+//==================================================================================================
+-Programação Assíncrona (callbacks,Promises)  
+//=================================================================================================
+//==================================================================================================
+-Eventos
+//=================================================================================================
+//==================================================================================================
+-FileSystem 
+//=================================================================================================
+//==================================================================================================
+-Módulo http - WEB
+var http = require('http');
+var url = require('url');
+var server = http.createServer(function(request, response){
+response.writeHead(200, {"Content-Type": "text/html"});
+response.write("<h1>Dados da query string</h1>");
+var result = url.parse(request.url, true);
+for(var key in result.query){
+response.write("<h2>"+key+" : "+result.query[key]+"</h2>");
+}
+response.end();
+});
+server.listen(3000, function(){
+console.log('Servidor http.');
+});
+//=================================================================================================
+//==================================================================================================
+-Express
+app.all('/api/*', auth);
+app.get('/api/users', users.list);
+app.post('/api/users', users.create);
+...
+ 
+Another way of doing the same thing is to execute:
+ 
+app.get('/api/users', auth, users.list);
+app.post('/api/users', auth, users.create)
+//=================================================================================================
+//==================================================================================================
+-Acesso a Base de Dados
+//=================================================================================================
+//==================================================================================================
+-Aplicações REST
+//=================================================================================================
+//==================================================================================================
+-Comunicação em tempo real com WebSockets
+//=================================================================================================
+//==================================================================================================
+-Desenvolvimento de uma aplicação Web de chat em tempo real
+//=================================================================================================
+//==================================================================================================
+utilizando protocolo WebSocket.
+
+
+==============
