@@ -142,6 +142,44 @@ response.end();
 server.listen(3000, function(){
 console.log('Servidor http.');
 });
+
+
+
+
+
+
+
+
+var
+var
+var
+var
+http = require('http');
+querystring = require('querystring');
+util = require('util');
+form = require('fs').readFileSync('form.html');
+http.createServer(function (request, response) {
+if (request.method === "POST") {
+var postData = '';
+request.on('data', function (chunk) {
+postData += chunk;
+}).on('end', function () {
+var postDataObject = querystring.parse(postData);
+console.log('User Posted:\n', postData);
+response.end('You Posted:\n' + util.inspect(postDataObject));
+});
+}
+if (request.method === "GET") {
+response.writeHead(200, {'Content-Type': 'text/html'});
+response.end(form);
+}
+}).listen(8080);
+
+
+
+
+
+
 //=================================================================================================
 //==================================================================================================
 -Express
@@ -154,6 +192,14 @@ Another way of doing the same thing is to execute:
  
 app.get('/api/users', auth, users.list);
 app.post('/api/users', auth, users.create)
+
+app.all('/api', authorize);
+app.get('/api/articles', routes.article.list)
+app.post('/api/articles', routes.article.add);
+app.put('/api/articles/:id', routes.article.edit);
+app.del('/api/articles/:id', routes.article.del);
+
+
 //=================================================================================================
 //==================================================================================================
 -Acesso a Base de Dados

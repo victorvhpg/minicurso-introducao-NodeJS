@@ -20,20 +20,32 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			p{
+				text-align: justify;
+			}
+		</style>
 		<!--[if lt IE 9]>
 			<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
 	<body>
+		<!-- ###################################################################################### -->
+		<!-- <section>
+			<h2>titulo</h2>
+			<p>xxxxxxxxxxx</p>
+		</section>
+	   -->
+		<!-- ###################################################################################### -->
 		<div class="reveal">
 			<div class="slides">
 				<!-- ###################################################################################### -->
-				<section  >			
-					<h1>Introdução ao Node.js</h1><h3>INFOESTE 2015</h3>
+				<section>
+					<h1>Introdução ao Node.js</h1>
 					<div>
-						<img src="img/node.png"  style="width:200px" />
+						<img src="img/node.png" style="width:200px" />
 					</div>
-					
+					<h3>INFOESTE 2015</h3>
 					<p style="text-align:left">
 						<strong>Instrutor:</strong>
 						<br />Victor Hugo de Paiva Gonçales</p>
@@ -47,14 +59,214 @@
 							</li>
 						</ul>
 					</div>
-		
 				</section>
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>Hello There</h2>
-					<p>reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of
-						what it can do.</p>
+					<h2>CONTEÚDO PROGRAMÁTICO</h2>
+					<div style='font-size:26px'>
+						<ul>
+							<li>Introdução</li>
+							<li>Conhecendo Node.js</li>
+							<li>Instalando Node.js</li>
+							<li>Conhecendo Sistema de Módulos do Node.js</li>
+							<li>NPM</li>
+							<li>Importância de saber utilizar sistema de controle de versão - GIT</li>
+							<li>Criação de Módulos</li>
+							<li>Programação Assíncrona (callbacks,Promises)</li>
+							<li>Eventos</li>
+							<li>FileSystem</li>
+							<li>Módulo http - WEB</li>
+							<li>Express</li>
+							<li>Acesso a Base de Dados</li>
+							<li>Aplicações REST</li>
+							<li>Comunicação em tempo real com WebSockets</li>
+							<li>Desenvolvimento de uma aplicação Web de chat em tempo real</li>
+						</ul>
+					</div>
 				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Introdução</h2>
+					<p>Atualmente o JavaScript é uma das linguagens de programação mais populares, está presente em diversos ambientes tais como
+						browsers, desktops, servidores, mobile, microcontroladores, "internet das coisas", TV e etc...
+						<br />No github JavaScript é de longe a linguagem mais
+						<a target="_target" href='https://github.com/search?o=desc&q=stars%3A%3E1&s=stars&type=Repositories'>popular</a>.
+						<br />Neste Minicurso será abordado o JavaScript no Servidor, através de Node.js</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Node.js é uma plataforma de desenvolvimento JavaScript para aplicações em rede(servidores), ideal para aplicações com milhares
+						de conexões simultâneas, é uma tecnologia open-source, multiplataforma (Mac, Windows, Linux), arquitetura orientada a eventos
+						e I/O não-bloqueante.
+						<br />Noje.js foi criado em 2009 por Ryan Dahl, e é patrocinado pela empresa Joyent. Utiliza o Google V8 como engine Javascript.
+						<br
+						/>Node.js vem ganhando adoção de grandes empresas como
+						<a href="https://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile"
+						target="_blank">LinkedIn</a>,
+						<a href="http://venturebeat.com/2012/01/24/why-walmart-is-using-node-js/" target="_blank">Wallmart</a>,
+						<a href="http://www.datacenterknowledge.com/archives/2013/12/06/need-speed-groupon-migrated-node-js/" target="_blank">Groupon</a>,
+						<a href="http://azure.microsoft.com/en-us/develop/nodejs/" target="_blank">Microsoft</a>,
+						<a href="http://techblog.netflix.com/2014/08/scaling-ab-testing-on-netflixcom-with_18.html" target="_blank">NetFlix</a>,
+						<a href="http://www.infoq.com/br/news/2013/12/paypal-java-javascript" target="_blank">Paypal</a>e
+						<a href="https://github.com/joyent/node/wiki/Projects%2C-Applications%2C-and-Companies-Using-Node" target="_blank">   muitas outras</a>
+						<br />
+						<br />
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Node.js roda  de  forma assíncrona com I/O não bloqueante,  seu  código roda
+						numa única Thread, mas as  operações I/O assíncronas são feitas  pelas Threads do S.O,
+					    É como se o  Node ficasse em um  loop esperando eventos do S.O, Node  delega  uma  tarefa I/O
+						para o S.O.  e já faz  outra  coisa, ele não  bloqueia aguardando resposta I/O, você deve  delegar um 
+						callback para ser  executado  logo quando a tarefa I/O for concluída pelo S.O.
+						
+						 
+						 </p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p  style="text-align:center">
+						
+						<img  src="img/threading_node.png"  style="height:500px;margin:0 auto"  />
+						<div style="font-size:14px">
+							Fonte:
+							What Makes Node.js Faster Than Java?<br />
+							<a target="_blank" href='https://strongloop.com/strongblog/node-js-is-faster-than-java/'>
+								 https://strongloop.com/strongblog/node-js-is-faster-than-java/
+								 </a>
+						</div>
+						 </p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Utilizado para:
+						<ul>
+							<li>Aplicações em tempo real (chat, games multiplayer, monitoramento)</li>
+							<li>Aplicações web/mobile</li>
+							<li>API de serviços REST / web Services - JSON</li>
+							<li>Processos de build</li>
+							<li>Automações de builds/deploy</li>
+							<li>Programas Desktop(NW, Electron), por exemplo Popcorn Time, Atom Editor, Visual Studio Code, Vivaldi Browser e outros</li>
+						</ul>
+					</p>
+					<p>Não é ideal para tarefas que requerem muito processo da CPU.</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Não é ideal para tarefas que requerem muito processo da CPU.</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>titulo</h2>
+					<p>xxxxxxxxxxx</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
@@ -66,11 +278,7 @@
 						<a href="#" class="navigate-down">
 							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
 						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
+					</section>>
 					<section>
 						<h2>Basement Level 2</h2>
 						<p>That's it, time to go back up.</p>
