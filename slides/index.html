@@ -72,6 +72,7 @@
 							<li>Conhecendo Sistema de Módulos</li>
 							<li>Criação de Módulos</li>
 							<li>NPM</li>
+							<li>Arquivo package.json</li>
 							<li>Importância de saber utilizar sistema de controle de versão - GIT</li>
 
 							<li>Programação Assíncrona (callbacks,Promises)</li>
@@ -334,36 +335,127 @@ module.exports = MeuModuloComPrototype;
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>NPM</h2>
+					<p>
+						<ul style="font-size:28px">
+								<li>npm install :  instala todas  as  dependencias de  um projeto</li>
+								<li><strong> npm install nome_do_módulo</strong> : instala um módulo no projeto.</li>
+								<li> npm install -g nome_do_módulo : instala um módulo global.(disponível no prompt) </li>
+								<li> npm install nome_do_módulo --save : instala o módulo no projeto,atualizando o package.json na lista de dependências.</li>
+								
+								<li> npm list : lista todos os módulos do projeto.</li>
+								<li> npm list -g : lista todos os módulos globais.</li>
+								<li> npm remove nome_do_módulo : desinstala um módulo do projeto.</li>
+								<li> npm remove -g nome_do_módulo : desinstala um módulo global.</li>
+								<li> npm update nome_do_módulo : atualiza a versão do módulo.</li>
+						</ul>
+						
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Arquivo package.json</h2>
+					<p>É o arquivo  onde contém as configurações de seu  projeto/módulo,
+						ele é utilizado  pelo npm. 
+						<br /> 
+						
+						<br />
+						
+						
+						 </p>
+			<pre>
+						<code data-trim  >						 
+{
+  "name": "nome-do-projeto",
+  "version": "1.0.0",
+  "description": "exemplo de projeto",
+  "main": "index.js",
+  "scripts": {
+    "comando": "ls -la",
+    "start" : "node app.js"
+  },
+  "dependencies": {
+    "primus": "*",
+    "async": "~0.8.0",
+    "express": "4.2.x",
+    "winston": "git://github.com/flatiron/winston#master"
+  }
+}
+	 </code>
+					</pre>
+						 
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Importância de saber utilizar sistema de controle de versão - GIT</h2>
+					<p>GIT é um sistema de controle de versão, atualmente considerado o melhor existente e o mais 
+						utilizado nos projetos.
+						<br />
+					  Hoje em  dia é fundamental qualquer desenvolvedor  ter pelo  menos o mínimo de  conhecimento
+					  de GIT.<br /> 
+					  
+						<br /> 
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Programação Assíncrona (callbacks,Promises)</h2>
+					<p>Todas as  operações que  são assíncronas necessitam de  um callback,
+						que será chamado quando  a operação terminar.<br />
+						Convenciona-se  no node que o primeiro parametro do callback deve
+						ser o motivo do erro caso haja, depois  os  outros parâmetros podem ser  qualquer  coisa.<br />
+			
+					</p>
+					
+
+			<pre>
+						<code data-trim  >	
+fs.readFile("message.txt", function (err, conteudo) {
+  if (err){
+     throw err;
+  }
+  console.log("conteudo do arquivo: " +conteudo);
+});
+
+	</code>
+					</pre>		
+					
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Promises</h2>
+					<p>Promises possibilita  trabalhar com operações assíncronas de uma outra maneira 
+					</p>
+								<pre>
+						<code data-trim  >	
+function ler(arq) {
+	return new Promise(function (resolve, reject) {
+		fs.readFile(arq, function (err, conteudo) {
+			if (err) {
+				reject(err);
+				return;
+			}
+			resolve(conteudo);
+		});
+	});
+}
+
+ler("teste.txt").then(function (conteudo) {
+	console.log("PRO" + conteudo.toString());
+}).catch(function (err) {
+	console.log(err.message);
+});						
+	</code>
+					</pre>	
+					
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
