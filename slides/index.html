@@ -77,7 +77,7 @@
 
 							<li>Programação Assíncrona (callbacks,Promises)</li>
 							<li>Eventos</li>
-							<li>FileSystem</li>
+							<li>Streams</li>
 							<li>Módulo http - WEB</li>
 							<li>Express</li>
 							<li>Acesso a Base de Dados</li>
@@ -107,8 +107,7 @@
 						de conexões simultâneas, é uma tecnologia open-source, multiplataforma (Mac, Windows, Linux), arquitetura orientada a eventos
 						e I/O não-bloqueante.
 						<br />Noje.js foi criado em 2009 por Ryan Dahl, e é patrocinado pela empresa Joyent. Utiliza o Google V8 como engine Javascript.
-						<br
-						/>Node.js vem ganhando adoção de grandes empresas como
+						<br /> Node.js vem ganhando adoção de grandes empresas como
 						<a href="https://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile"
 						target="_blank">LinkedIn</a>,
 						<a href="http://venturebeat.com/2012/01/24/why-walmart-is-using-node-js/" target="_blank">Wallmart</a>,
@@ -168,11 +167,14 @@
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>io.js ?</h2>
-					<p>O io.js é um fork do Node.js, iniciado pelos principais developers do Node.js. E traz as últimas melhorias da linguagem,
+					<h2>io.js ? Node.js Foundation?</h2>
+					<p  style='font-size:30px'>O io.js é um fork do Node.js, iniciado pelos principais developers do Node.js. E traz as últimas melhorias da linguagem,
 						API e últimas atualizações do V8. Projeto tem como objetivo continuar o desenvolvimento do io.js sob um "modelo de governança
 						aberto" em oposição à administração corporativa. Nos primeiros meses já atraiu mais desenvolvedores ativos que o projeto
-						Node.js teve em toda a sua história.</p>
+						Node.js teve em toda a sua história.<br />
+						UPDATE: em maio de 2015, o projeto  Node.js  e ios.js  se juntaram  e agora são "Node.js Foundation",
+						com  patrocinadores  como Linux Foundation, IBM, Microsoft, PayPal, Joyent e outros
+						</p>
 					<div style="text-align:center">
 						<img src="img/io.png" style='height:150px;border:none' />
 					</div>
@@ -284,7 +286,7 @@ exports.fazAlgo  = function(){
 				<!-- ###################################################################################### -->
 				<section>
 					<h2>Criação de Módulos</h2>
-			 
+
 					<p>Exemplo modulo com função construtora:</p>
 					<pre>
 						<code data-trim  >
@@ -301,8 +303,8 @@ MeuModuloComPrototype.prototype.fazAlgoDiferente = function () {
 	return "fazAlgoDiferente";
 };
 
-module.exports = MeuModuloComPrototype; 
- 
+module.exports = MeuModuloComPrototype;
+
 						</code>
 					</pre>
 				</section>
@@ -317,18 +319,18 @@ module.exports = MeuModuloComPrototype;
 				       <br />Ele  já vem instalado  junto  com  o  node.<br />
 				   <a href="http://www.npmjs.com/" target="_blank" > www.npmjs.com </a>
 				   </p>
-				   
+
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
 					<h2>NPM</h2>
-					<p style="text-align:center"> 
+					<p style="text-align:center">
 						<img src="img/npm.png"  />
 						<br />
 						http://www.modulecounts.com/
-						
+
 					</p>
 				</section>
 				<!-- ###################################################################################### -->
@@ -342,14 +344,14 @@ module.exports = MeuModuloComPrototype;
 								<li><strong> npm install nome_do_módulo</strong> : instala um módulo no projeto.</li>
 								<li> npm install -g nome_do_módulo : instala um módulo global.(disponível no prompt) </li>
 								<li> npm install nome_do_módulo --save : instala o módulo no projeto,atualizando o package.json na lista de dependências.</li>
-								
+
 								<li> npm list : lista todos os módulos do projeto.</li>
 								<li> npm list -g : lista todos os módulos globais.</li>
 								<li> npm remove nome_do_módulo : desinstala um módulo do projeto.</li>
 								<li> npm remove -g nome_do_módulo : desinstala um módulo global.</li>
 								<li> npm update nome_do_módulo : atualiza a versão do módulo.</li>
 						</ul>
-						
+
 					</p>
 				</section>
 				<!-- ###################################################################################### -->
@@ -358,15 +360,15 @@ module.exports = MeuModuloComPrototype;
 				<section>
 					<h2>Arquivo package.json</h2>
 					<p>É o arquivo  onde contém as configurações de seu  projeto/módulo,
-						ele é utilizado  pelo npm. 
-						<br /> 
-						
+						ele é utilizado  pelo npm.
 						<br />
-						
-						
+
+						<br />
+
+
 						 </p>
 			<pre>
-						<code data-trim  >						 
+						<code data-trim  >
 {
   "name": "nome-do-projeto",
   "version": "1.0.0",
@@ -385,20 +387,58 @@ module.exports = MeuModuloComPrototype;
 }
 	 </code>
 					</pre>
-						 
+
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
+					<h2>Versionamento</h2>
+					<p>
+				  Para controle do  número  da versão utiliza-se o padrão 'Semantic Versioning' <br />
+						X.X.X <br />
+					 MAJOR.MINOR.PATCH : <br />
+					é incrementado da  seguinte forma:
+
+				</p>
+
+<ul style="font-size:20px">
+
+	<li>MAJOR -  quando você faz  mudanças incompativeis com a versão anterior</li>
+	<li>MINOR -  quando você adiciona  novas  funcionalidades</li>
+	<li>PATCH -  quando você faz  correções de  bugs </li>
+
+</ul>
+<p style="font-size:19px">
+	~     atualizações a nível de Patch  <br />
+	^   atualizações a nível de Minor <br />
+	<br />
+ Patch releases: 1.0 or 1.0.x or ~1.0.4<br />
+Minor releases: 1 or 1.x or ^1.0.4<br />
+Major releases: * or x<br />
+<br />
+<a href='http://semver.npmjs.com/'  target="_blank" >http://semver.npmjs.com </a>
+</p>
+
+
+
+						<br />
+
+				</section>
+
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
 					<h2>Importância de saber utilizar sistema de controle de versão - GIT</h2>
-					<p>GIT é um sistema de controle de versão, atualmente considerado o melhor existente e o mais 
+					<p>GIT é um sistema de controle de versão, atualmente considerado o melhor existente e o mais
 						utilizado nos projetos.
 						<br />
 					  Hoje em  dia é fundamental qualquer desenvolvedor  ter pelo  menos o mínimo de  conhecimento
-					  de GIT.<br /> 
-					  
-						<br /> 
+					  de GIT.<br />
+
+						<br />
 					</p>
 				</section>
 				<!-- ###################################################################################### -->
@@ -410,12 +450,12 @@ module.exports = MeuModuloComPrototype;
 						que será chamado quando  a operação terminar.<br />
 						Convenciona-se  no node que o primeiro parametro do callback deve
 						ser o motivo do erro caso haja, depois  os  outros parâmetros podem ser  qualquer  coisa.<br />
-			
+
 					</p>
-					
+
 
 			<pre>
-						<code data-trim  >	
+						<code data-trim  >
 fs.readFile("message.txt", function (err, conteudo) {
   if (err){
      throw err;
@@ -424,18 +464,18 @@ fs.readFile("message.txt", function (err, conteudo) {
 });
 
 	</code>
-					</pre>		
-					
+					</pre>
+
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
 					<h2>Promises</h2>
-					<p>Promises possibilita  trabalhar com operações assíncronas de uma outra maneira 
+					<p>Promises possibilita  trabalhar com operações assíncronas de uma outra maneira.
 					</p>
 								<pre>
-						<code data-trim  >	
+						<code data-trim  >
 function ler(arq) {
 	return new Promise(function (resolve, reject) {
 		fs.readFile(arq, function (err, conteudo) {
@@ -452,42 +492,75 @@ ler("teste.txt").then(function (conteudo) {
 	console.log("PRO" + conteudo.toString());
 }).catch(function (err) {
 	console.log(err.message);
-});						
+});
 	</code>
-					</pre>	
-					
+					</pre>
+
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Eventos</h2>
+					<p>O módulo  'events' possibilita nos  criarmos  nossos próprios eventos. </p>
+					<pre>
+			<code data-trim  >
+var EventEmitter = require("events").EventEmitter;
+
+var objEmitter = new EventEmitter();
+
+objEmitter.on("fezAlgo", function(a, b, c) {
+	console.log(a+b+c);
+});
+
+
+// Emit
+objEmitter.emit("fezAlgo", "aaa" , "bbb" , "ccc");
+				</code>
+								</pre>
+
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the
-							<em>Space</em>key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
+					<h2>Streams</h2>
+					<p> Com streams podemos  manipular o fluxo  de leitura/escrita de uma  maneira mais  performática. </p>
+					<pre>
+			<code data-trim  >
+var fs = require("fs");
+var readableStream = fs.createReadStream("teste.txt");
+var data = "";
+readableStream.on("data", function(chunk) {
+    data += chunk;
+});
+readableStream.on("end", function() {
+    console.log(data);
+});
+				</code>
+	</pre>
 				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>	Módulo http - WEB</h2>
+					<p>
+					xxx
+
+					</p>
+							<pre>
+							<code data-trim  >
+
+							</code>
+							</pre>
+				</section>
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
 				<section>
 					<h2>Slides</h2>
 					<p>Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at
@@ -704,8 +777,7 @@ ler("teste.txt").then(function (conteudo) {
 					<h2>Export to PDF</h2>
 					<p>Presentations can be
 						<a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0"
-					marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+
 				</section>
 				<section>
 					<h2>Global State</h2>
