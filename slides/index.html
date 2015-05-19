@@ -67,11 +67,13 @@
 						<ul>
 							<li>Introdução</li>
 							<li>Conhecendo Node.js</li>
+							<li>io.js ?</li>
 							<li>Instalando Node.js</li>
-							<li>Conhecendo Sistema de Módulos do Node.js</li>
+							<li>Conhecendo Sistema de Módulos</li>
+							<li>Criação de Módulos</li>
 							<li>NPM</li>
 							<li>Importância de saber utilizar sistema de controle de versão - GIT</li>
-							<li>Criação de Módulos</li>
+
 							<li>Programação Assíncrona (callbacks,Promises)</li>
 							<li>Eventos</li>
 							<li>FileSystem</li>
@@ -112,6 +114,7 @@
 						<a href="http://www.datacenterknowledge.com/archives/2013/12/06/need-speed-groupon-migrated-node-js/" target="_blank">Groupon</a>,
 						<a href="http://azure.microsoft.com/en-us/develop/nodejs/" target="_blank">Microsoft</a>,
 						<a href="http://techblog.netflix.com/2014/08/scaling-ab-testing-on-netflixcom-with_18.html" target="_blank">NetFlix</a>,
+						<a href="http://www.bbc.co.uk/blogs/internet/entries/47a96d23-ae04-444e-808f-678e6809765d.*" target="_blank">BBC</a>,
 						<a href="http://www.infoq.com/br/news/2013/12/paypal-java-javascript" target="_blank">Paypal</a>e
 						<a href="https://github.com/joyent/node/wiki/Projects%2C-Applications%2C-and-Companies-Using-Node" target="_blank">   muitas outras</a>
 						<br />
@@ -123,31 +126,25 @@
 				<!-- ###################################################################################### -->
 				<section>
 					<h2>Conhecendo Node.js</h2>
-					<p>Node.js roda  de  forma assíncrona com I/O não bloqueante,  seu  código roda
-						numa única Thread, mas as  operações I/O assíncronas são feitas  pelas Threads do S.O,
-					    É como se o  Node ficasse em um  loop esperando eventos do S.O, Node  delega  uma  tarefa I/O
-						para o S.O.  e já faz  outra  coisa, ele não  bloqueia aguardando resposta I/O, você deve  delegar um 
-						callback para ser  executado  logo quando a tarefa I/O for concluída pelo S.O.
-						
-						 
-						 </p>
+					<p>Node.js roda de forma assíncrona com I/O não bloqueante, seu código roda numa única Thread, mas as operações I/O assíncronas
+						são feitas pelas Threads do S.O, É como se o Node ficasse em um loop esperando eventos do S.O, Node delega uma tarefa I/O
+						para o S.O. e já faz outra coisa, ele não bloqueia aguardando resposta I/O, você deve delegar um callback para ser executado
+						logo quando a tarefa I/O for concluída pelo S.O.</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
 					<h2>Conhecendo Node.js</h2>
-					<p  style="text-align:center">
-						
-						<img  src="img/threading_node.png"  style="height:500px;margin:0 auto"  />
-						<div style="font-size:14px">
-							Fonte:
-							What Makes Node.js Faster Than Java?<br />
+					<p style="text-align:center">
+						<img src="img/threading_node.png" style="height:500px;margin:0 auto" />
+						<div style="font-size:14px">Fonte: What Makes Node.js Faster Than Java?
+							<br />
 							<a target="_blank" href='https://strongloop.com/strongblog/node-js-is-faster-than-java/'>
 								 https://strongloop.com/strongblog/node-js-is-faster-than-java/
 								 </a>
 						</div>
-						 </p>
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
@@ -170,57 +167,168 @@
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>Conhecendo Node.js</h2>
-					<p>Não é ideal para tarefas que requerem muito processo da CPU.</p>
+					<h2>io.js ?</h2>
+					<p>O io.js é um fork do Node.js, iniciado pelos principais developers do Node.js. E traz as últimas melhorias da linguagem,
+						API e últimas atualizações do V8. Projeto tem como objetivo continuar o desenvolvimento do io.js sob um "modelo de governança
+						aberto" em oposição à administração corporativa. Nos primeiros meses já atraiu mais desenvolvedores ativos que o projeto
+						Node.js teve em toda a sua história.</p>
+					<div style="text-align:center">
+						<img src="img/io.png" style='height:150px;border:none' />
+					</div>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Instalando Node.js</h2>
+					<p>A instalação do Node.js é muitos simples em todos os S.O.
+						<br />Acesse: https://nodejs.org/download/
+						<br />baixe e instale
+						<br />next...next...next...
+						<div style="text-align:center">
+							<img src="img/install.png" style='height:350px;border:none' />
+						</div>
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Instalando Node.js</h2>
+					<p>Após a instalação abra o prompt de comando e digite node
+						<br />
+						<ul>
+							<li>Objeto process</li>
+							<li>hello world</li>
+							<li>exemplos...</li>
+						</ul>
+					</p>
+				</section>
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<p>Node possui um sistema de módulos, que segue o padrão CommonJS, para carregar um módulo utiliza-se a função require( moduloId
+						), passando o caminho/id do módulo</p>
+					<pre>
+						<code data-trim>var os = require("os"); console.log("total de CPU:" + os.cpus().length);</code>
+					</pre>
+					<p>
+						Uma vez carregados eles  ficam em  cache.
+
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<p>Tipos de módulos:
+						<ul>
+							<li>Módulos nativos (fs,os, path, http,etc...)</li>
+							<li>Módulos criados (arquivos que nós criamos)</li>
+							<li>Módulos de terceiros (que estão na pasta node_modules)</li>
+						</ul>
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<div style="font-size:31px">
+					<p>No require() quando passamos o nome do módulo:</p>
+					<pre>
+						<code data-trim contenteditable>var nomeDoModulo = require("nomeDoModulo");</code>
+					</pre>
+					<p>Primeiro o node procura por um módulo nativo com este nome, caso não exista então ele busca na pasta node_modules, caso não
+						encontre então ele busca na pasta node_modules superior e assim por diante até encontrar
+						ou atingir a raiz do sistema. Quando
+						passamos um caminho relativo ou absoluto node então busca exatamente este módulo.</p>
+					<pre>
+						<code data-trim contenteditable>var nomeDoModulo = require("./teste/teste2/nomeDoModulo");</code>
+					</pre>
+					</div>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>Criação de Módulos</h2>
+					<p>Para criar  um módulo apenas  atribuimos para a propriedade
+						 <i>module.exports</i>
+					</p>
+					<p>Exemplo:</p>
+					<pre>
+						<code data-trim  >
+//meu modulo
+var xxxx = "teste";
+
+module.exports = {
+	fazAlgo: function(){
+		return xxxx;
+	}
+};
+//ou
+exports.fazAlgo  = function(){
+	return xxxx;
+};
+						</code>
+					</pre>
+				</section>
+								<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Criação de Módulos</h2>
+			 
+					<p>Exemplo modulo com função construtora:</p>
+					<pre>
+						<code data-trim  >
+
+var MeuModuloComPrototype = function () {
+	this.teste = "teste....";
+};
+
+MeuModuloComPrototype.prototype.fazAlgo = function () {
+	return this.teste;
+};
+
+MeuModuloComPrototype.prototype.fazAlgoDiferente = function () {
+	return "fazAlgoDiferente";
+};
+
+module.exports = MeuModuloComPrototype; 
+ 
+						</code>
+					</pre>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>NPM</h2>
+					<p>NPM  é  o  gerenciador de pacotes  do node, com ele é possível instalar
+						módulos criados por terceiros. Atualmente devido a popularidade do Node.js, o NPM
+						é o gerenciador de pacotes com maior  número de pacotes entre  todos de  outras principais linguagens.
+				       <br />Ele  já vem instalado  junto  com  o  node.<br />
+				   <a href="http://www.npmjs.com/" target="_blank" > www.npmjs.com </a>
+				   </p>
+				   
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<section>
-					<h2>titulo</h2>
-					<p>xxxxxxxxxxx</p>
+					<h2>NPM</h2>
+					<p style="text-align:center"> 
+						<img src="img/npm.png"  />
+						<br />
+						http://www.modulecounts.com/
+						
+					</p>
 				</section>
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
