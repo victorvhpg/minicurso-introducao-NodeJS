@@ -31,7 +31,8 @@ router.route('/livro')
 
 
 router.get("/", function (req, res, next) {
-  res.render("index", { msg: "pagina inicial", dados: ["nomeA", "nomeB", "nomeC"] });
+  
+  res.render("index", { msg: "pagina inicial", dados: ["nomeA", "nomeB", "nomeC" + req.query.teste] });
 });
 
 
