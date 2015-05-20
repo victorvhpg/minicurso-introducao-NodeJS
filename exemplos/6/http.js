@@ -20,7 +20,13 @@ server.listen(8000, function () {
 
 
 
+/*
 
+var result = url.parse(req.url, true);
+for(var key in result.query){
+ 
+}
+*/
 
 
 

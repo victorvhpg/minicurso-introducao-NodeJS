@@ -46,6 +46,7 @@
 						<img src="img/node.png" style="width:200px" />
 					</div>
 					<h3>INFOESTE 2015</h3>
+					
 					<p style="text-align:left">
 						<strong>Instrutor:</strong>
 						<br />Victor Hugo de Paiva Gonçales</p>
@@ -83,7 +84,7 @@
 							<li>Acesso a Base de Dados</li>
 							<li>Aplicações REST</li>
 							<li>Comunicação em tempo real com WebSockets</li>
-							<li>Desenvolvimento de uma aplicação Web de chat em tempo real</li>
+							<li>Chat básico em tempo real</li>
 						</ul>
 					</div>
 				</section>
@@ -106,7 +107,7 @@
 					<p>Node.js é uma plataforma de desenvolvimento JavaScript para aplicações em rede(servidores), ideal para aplicações com milhares
 						de conexões simultâneas, é uma tecnologia open-source, multiplataforma (Mac, Windows, Linux), arquitetura orientada a eventos
 						e I/O não-bloqueante.
-						<br />Noje.js foi criado em 2009 por Ryan Dahl, e é patrocinado pela empresa Joyent. Utiliza o Google V8 como engine Javascript.
+						<br />Noje.js foi criado em 2009 por Ryan Dahl, e é patrocinado pela empresa Joyent*. Utiliza o Google V8 como engine Javascript.
 						<br /> Node.js vem ganhando adoção de grandes empresas como
 						<a href="https://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile"
 						target="_blank">LinkedIn</a>,
@@ -668,19 +669,93 @@ app.post("/a/:id", function (req, res, next) {
 				
 				
 				
-	
+				
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
  
 				
 				
 				<section>
-					<h2>Point of View</h2>
-					<p>Press
-						<strong>ESC</strong>to enter the slide overview.</p>
-					<p>Hold down alt and click on any element to zoom in on it using
-						<a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.</p>
+					<h2> Acesso a Base de Dados </h2>
+					<p> 
+						
+					Há  vários  tipos  de módulos que oferecem  suporte a base de dados 
+					(MySql, MSSQL, Oracle, MongoDB, PostgreSQL entre  outros).
+						
+					</p>
+					
+
 				</section>
+				
+				
+				
+				
+				
+				
+					   <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+				
 				<section>
-					<h2>Touch Optimized</h2>
+			<h2> Acesso a Base de Dados  </h2>
+				<p>  
+									
+<pre>
+<code data-trim  >
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123456'
+});
+
+connection.connect();
+
+connection.query('SELECT nome FROM  pesssoa ', function(err, rows, fields) {
+  if (err) {throw err;}
+  
+  console.log('nome : ', rows[0].nome);
+});
+
+connection.end();
+</code>
+</pre>
+				
+				</p>
+				
+				</section>			
+				
+						   <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+				
+				<section>
+				<h2> Aplicações REST </h2>
+				<p>  
+				   O Express  possibilita utilizar diversas engines de templates,
+				   devemos setar onde estão as views e qual  engine iremos  usar
+				
+				</p>
+				
+<pre>
+<code data-trim  >
+app.set("view engine", "ejs");
+app.set("views", "./views");
+ 
+</code>
+</pre>
+				</section>		
+				
+				
+				
+ 
+				
+				
+				<section>
+					<h2>http://socket.io/docs/</h2>
 					<p>Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.</p>
 				</section>
 				<section data-markdown>
