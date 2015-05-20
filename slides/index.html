@@ -546,12 +546,20 @@ readableStream.on("end", function() {
 				<section>
 					<h2>	Módulo http - WEB</h2>
 					<p>
-					xxx
+				 Com node  você  que cria o seu  próprio
+				 servidor, usando  o módulo  http
 
 					</p>
 							<pre>
 							<code data-trim  >
-
+var http = require("http");
+var server = http.createServer(function (req, res) {
+	res.write(" oi ");
+	res.end("FIM");
+});
+server.listen(8000, function () {
+	console.log("servidor rodando na porta 8000");
+});
 							</code>
 							</pre>
 				</section>
@@ -562,11 +570,108 @@ readableStream.on("end", function() {
 
 
 				<section>
-					<h2>Slides</h2>
-					<p>Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at
-						<a href="http://slides.com"
-						target="_blank">http://slides.com</a>.</p>
+					<h2>Express</h2>
+					<p> Express é framework WEB, que facilita  o desenvolvimento web com node,
+						ele lida  com views, rotas, cookies, sessions, e outras coisas de servidores. 
+						
+						</p>
+						
+ <pre>
+ <code data-trim  >
+npm install -g express
+npm install express
+//===========================
+var express = require("express");
+var http = require("http");
+var app = express();
+ 
+http.createServer(app).listen(8000);
+
+ </code>
+ </pre>
 				</section>
+				
+				
+				
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+				
+				<section>
+				<h2>Express - Middleware</h2>
+				<p> Middleware, são 'funções'  pré-processam  a  requisição,
+				por exemplo: parse de cookies, session, querystring, filtros etc...
+				
+				</p>
+				
+<pre>
+<code data-trim  >
+function middlewareX(req, resp next) {
+
+	next();
+}
+
+app.use(middlewareX);
+
+
+</code>
+</pre>
+				</section>
+		   <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+				
+				<section>
+				<h2>Express - Views</h2>
+				<p>  
+				   O Express  possibilita utilizar diversas engines de templates,
+				   devemos setar onde estão as views e qual  engine iremos  usar
+				
+				</p>
+				
+<pre>
+<code data-trim  >
+app.set("view engine", "ejs");
+app.set("views", "./views");
+ 
+</code>
+</pre>
+				</section>				
+						
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+				
+				<section>
+				<h2>Express - Rotas</h2>
+				<p>  
+					Para delegar as  rotas  usamos o verbo HTTP (get/post/put/delete), nos nomes dos  métodos
+				
+				</p>
+				
+<pre>
+<code data-trim  >
+app.get("/a", function (req, res, next) {
+ res.render("index", { xxxx : "oi index" });
+});	
+
+app.post("/a/:id", function (req, res, next) {
+ res.render("exibir", { msg :  "oi"});
+});	
+
+</code>
+</pre>
+				</section>		
+				
+				
+				
+	
+ 
+				
+				
 				<section>
 					<h2>Point of View</h2>
 					<p>Press
