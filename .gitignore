@@ -3,3 +3,4 @@ typings/
 .settings/
 node_modules/
 exemplos/REST/node_modules/
+exemplos/meu_app/node_modules/
