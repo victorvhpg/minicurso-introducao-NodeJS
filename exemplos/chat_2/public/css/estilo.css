@@ -1,0 +1,27 @@
+#txtMsg{
+	
+	height: 100px;
+	width: 300px;
+	
+}
+
+#btnEnviar{
+	
+	padding: 15px;
+	position: absolute;
+	right: 100px;
+	top:50%
+}
+
+#containerTxt{
+width: 500px;
+	position: relative;
+}
+
+#divResposta{
+	width: 600px;
+	margin-bottom:20px; 
+	height: 200px;
+	overflow: auto;
+	border: 1px solid #777;
+}

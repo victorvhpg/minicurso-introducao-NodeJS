@@ -25,7 +25,7 @@ var wss = new WebSocketServer({ port: portaServidorWebSocket });
 
 
 
-//metodo que envia para todos os clientes
+//metodo que envia para todos os usuarios
 wss.broadcast = function (data) {
   wss.clients.forEach(function (client) {
     client.send(data);
@@ -38,11 +38,15 @@ wss.broadcast = function (data) {
 wss.on("connection", function (ws) {
   
   //ws eh o socket  do  usuario que  se conectou
-  console.log("cliente  conectou");
+  console.log("usuario  conectou");
 
-  //evento  qdo  recebe   alguma  msg  do  cliente
+  //evento  qdo  recebe   alguma  msg  do  usuario
   ws.on("message", function (message) {
-    console.log("recebeu : " + message);
+    console.log("recebeu : " + message);  
+    //teste
+    wss.broadcast("usuario enviou: " + message);
+  
+  
   });
 
   //
@@ -54,7 +58,7 @@ wss.on("connection", function (ws) {
 
 
   ws.on("close", function () {
-    console.log(" fFECHOU");
+    console.log("usuario FECHOU");
   });
 
 });
