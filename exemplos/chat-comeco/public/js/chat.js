@@ -50,11 +50,11 @@ var chat = {
 	},
 
 	removeUsuarioDaLista: function (id) {
-		 
+
 	},
 
 	addNaLista: function (user) {
-		 
+
 	},
 
 	setarId: function (dados) {
@@ -71,83 +71,83 @@ var chat = {
 	recebeMsg: function (dados) {
 		chat.view.divResposta.innerHTML = dados.msg + "<hr />" + chat.view.divResposta.innerHTML;
 	},
-	
-	
+
+
 
 	init: function () {
 
 		chat.initView();
-		
+
 		chat.view.status.innerHTML = "NAO Conectado";
 		chat.view.btnFechar.disabled = true;
 		chat.view.btnEnviar.disabled = true;
 
 	
-	// CONECTAR
-	chat.view.btnConectar.addEventListener("click", function (event) {
+		// CONECTAR
+		chat.view.btnConectar.addEventListener("click", function (event) {
 
-		if (chat.view.txtUsuario.value.trim() == "") {
-			alert("informe o  usuário");
-			return false;
-		}
+			if (chat.view.txtUsuario.value.trim() == "") {
+				alert("informe o  usuário");
+				return false;
+			}
 					
-		//abrir  sockect
-		chat.socket = new WebSocket("ws://localhost:9090");
+			//abrir  sockect
+			chat.socket = new WebSocket("ws://localhost:9090");
 		
 	 
-		//ao  abrir sockect
-		chat.socket.addEventListener("open", function (event) {
-			chat.view.btnFechar.disabled = false;
-			chat.view.btnEnviar.disabled = false;
-			chat.view.status.innerHTML = "Conectado";
-			chat.entrarNoChat();
-		});
+			//ao  abrir sockect
+			chat.socket.addEventListener("open", function (event) {
+				chat.view.btnFechar.disabled = false;
+				chat.view.btnEnviar.disabled = false;
+				chat.view.status.innerHTML = "Conectado";
+				chat.entrarNoChat();
+			});
 		 
-		//ao  receber  mensagem  do  servidor
-		chat.socket.addEventListener("message", function (event) {
-			var dados = JSON.parse(event.data);
-			var acao = dados.acao;
-			console.log("recebeu  acao=" + acao);
-			if (acao == "setarId") {
-				chat.setarId(dados);
-			} else if (acao == "recebeMsg") {
-				chat.recebeMsg(dados);
-			} else if (acao == "adicionaUsuarioNalista") {
+			//ao  receber  mensagem  do  servidor
+			chat.socket.addEventListener("message", function (event) {
+				var dados = JSON.parse(event.data);
+				var acao = dados.acao;
+				console.log("recebeu  acao=" + acao);
+				if (acao == "setarId") {
+					chat.setarId(dados);
+				} else if (acao == "recebeMsg") {
+					chat.recebeMsg(dados);
+				} else if (acao == "adicionaUsuarioNalista") {
 
-				 
 
-			} else if (acao == "removeUsuarioDaLista") {
-				 
-			}
-		});
+
+				} else if (acao == "removeUsuarioDaLista") {
+
+				}
+			});
 		
-		//quando  ocorre orre no chat.socket
-		chat.socket.addEventListener("error", function (event) {
-			chat.view.divResposta.innerHTML = "Erro: " + event;
-		});
+			//quando  ocorre orre no chat.socket
+			chat.socket.addEventListener("error", function (event) {
+				chat.view.divResposta.innerHTML = "Erro: " + event;
+			});
 		
-		//quando fecha  o chat.socket  usuario  
-		chat.socket.addEventListener("close", function (event) {
-			chat.view.btnConectar.disabled = false;
-			chat.view.txtUsuario.disabled = false;
-			status.innerHTML = "NAO Conectado";
+			//quando fecha  o chat.socket  usuario  
+			chat.socket.addEventListener("close", function (event) {
+				chat.view.btnConectar.disabled = false;
+				chat.view.txtUsuario.disabled = false;
+				status.innerHTML = "NAO Conectado";
+			});
 		});
-	});
 	
 	 	
-	// btn  fechar  sockect
-	chat.view.btnFechar.addEventListener("click", function (event) {
-		chat.view.btnFechar.disabled = true;
-		chat.view.btnEnviar.disabled = true;
-		chat.view.divResposta.innerHTML = "";
-		chat.socket.close();
-	});
+		// btn  fechar  sockect
+		chat.view.btnFechar.addEventListener("click", function (event) {
+			chat.view.btnFechar.disabled = true;
+			chat.view.btnEnviar.disabled = true;
+			chat.view.divResposta.innerHTML = "";
+			chat.socket.close();
+		});
 	
-	// btn  enviar   mensagem  
-	chat.view.btnEnviar.addEventListener("click", function (event) {
-		chat.enviarMsg();
+		// btn  enviar   mensagem  
+		chat.view.btnEnviar.addEventListener("click", function (event) {
+			chat.enviarMsg();
 
-	});
+		});
 
 	}
 
