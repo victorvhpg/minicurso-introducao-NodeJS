@@ -4,30 +4,31 @@
 		<title>WebSocket</title>
 		<meta charset="UTF-8" />
 		<link href="css/estilo.css" rel="stylesheet" type="text/css" />
-		<script src="js/ws.js"></script>
+		<script src="js/chat.js"></script>
+		<script>
+			window.addEventListener("DOMContentLoaded", function () {			
+				chat.init();			 									
+			});
+		</script>
 	</head>
 	<body>Status:
 		<span id="status"></span>
-		
 		<hr />
 		<div>Usuário:
 			<input id="txtUsuario" value="" />
 			<input id="btnConectar" type="button" value="Conectar" />
 			<input id="btnFechar" type="button" value="Desconectar" />
 		</div>
-		
-		<div>
-			Falando com: <label id="falandoCom" > TODOS </label>
+		<div>Falando com:
+			<label id="falandoCom">TODOS</label>
 			<h4>Mensagens:</h4>
 			<div id="divResposta"></div>
 			<div id="containerTxt">
 				<textarea id="txtMsg"></textarea>
 				<input id="btnEnviar" type="button" value="Enviar" />
 			</div>
-			
 			<h4>Usuários online:</h4>
 			<ul id="listaDeUsuarios"></ul>
-				
 		</div>
 	</body>
 

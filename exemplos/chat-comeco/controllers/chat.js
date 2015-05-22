@@ -2,7 +2,7 @@ var usuarioController = require("./usuarioController");
 //=====================
 var chat = {
   wss: null,
-
+ 
 
   enviaParaTodos: function (dados) {
     //=======================================================
@@ -20,10 +20,10 @@ var chat = {
       acao: "recebeMsg",
       msg: "Usuario [" + objUsuarioQueEnviou.usuario + "] enviou: " + msg
     };
-    //para ...
-  
+    
     //envia  para  todos os  usuarios conectados
     this.enviaParaTodos(dadosEnviar);
+
   },
 
   usuarioEntrou: function (ws, dados) {
@@ -42,6 +42,9 @@ var chat = {
       acao: "recebeMsg",
       msg: "Usuario [" + objUser.usuario + "] entrou  no  chat"
     });
+    //add  lista
+     //...
+     
     return objUser;
   },
 
@@ -65,6 +68,7 @@ var chat = {
       console.log("close");
       if (objUser) {
         console.log("close: " + objUser.id);
+
       }
     });
   },
