@@ -1,0 +1,13 @@
+{
+  "name": "chat-2",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+   
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^0.7.2"
+  }
+}
