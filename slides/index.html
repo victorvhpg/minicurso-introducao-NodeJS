@@ -799,10 +799,75 @@ connection.end();
 				    WebSocket é  um  protocolo que  permite
 					comunicação  bidirecional  entre  cliente/servidor web
 					
+					
 				</p>
- 
+
 				</section>	
 				
+								<section>
+					<h2> WebSockets - eventos no  Servidor</h2>
+					<p>
+<table class="table table-bordered" style="font-size:24px">
+<tbody><tr><th width="10%">evento</th><th>descrição</th></tr>
+<tr><td>connection</td><td>quando a  conexão do  cliente  é  estabelecida  no servidor</td></tr>
+<tr><td>message</td><td>quando servidor  recebe um dado do  cliente </td></tr>
+<tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
+
+</tbody></table>
+ 
+						
+					</p>
+					
+				</section>
+				
+				
+				<section>
+	
+<h2> WebSockets </h2>
+	<p>
+		<pre>
+<code data-trim  >
+var WebSocketServer = require('ws').Server
+var wss = new WebSocketServer({ port: 8080 });
+ 
+wss.on('connection', function (ws) {
+ 
+  ws.on('message', function (dados) {
+    console.log("recebeu: " + dados);
+  });
+  ws.on('error', function () {
+    
+  });
+ 
+  ws.send('oi  client');
+});
+</code>
+		</pre>
+		
+	</p>
+	
+</section>
+				
+				
+				<section>
+					<h2> WebSockets - eventos no  cliente</h2>
+					<p>
+<table class="table table-bordered" style="font-size:24px">
+<tbody><tr><th width="10%">evento</th><th>descrição</th></tr>
+<tr><td>open</td><td>ocorre quando a  conexão  é  estabelecida</td></tr>
+<tr><td>message</td><td>quando cliente  recebe um dado do  servidor </td></tr>
+<tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
+<tr><td>close</td><td>quando a  conexão fecha</td></tr>
+</tbody></table>
+ 
+						
+					</p>
+					
+				</section>
+
+
+
+
 				
           <section>
 				<h2> Chat básico em tempo real</h2>
