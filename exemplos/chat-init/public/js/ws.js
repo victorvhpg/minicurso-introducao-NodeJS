@@ -8,6 +8,8 @@ window.addEventListener("DOMContentLoaded", function (event) {
 	var txtMsg = document.getElementById("txtMsg");
 	var divResposta = document.getElementById("divResposta");
 	var txtUsuario = document.getElementById("txtUsuario");
+	var listaDeUsuarios = document.getElementById("listaDeUsuarios");
+	
 	var socket;
 
 	var _id = 0;
@@ -44,7 +46,8 @@ window.addEventListener("DOMContentLoaded", function (event) {
 		txtUsuario.disabled = true;
 		btnConectar.disabled = true;
 		//carrega  a  lista  de  usuarios  online
-	    //
+	   
+	
 	};
 
 
