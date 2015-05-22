@@ -2,48 +2,65 @@
  
 window.addEventListener("DOMContentLoaded", function (event) {
 	var status = document.getElementById("status");
-	var open = document.getElementById("open");
-	var close = document.getElementById("close");
-	var send = document.getElementById("send");
-	var text = document.getElementById("text");
-	var message = document.getElementById("message");
+	var btnConectar = document.getElementById("btnConectar");
+	var btnFechar = document.getElementById("btnFechar");
+	var btnEnviar = document.getElementById("btnEnviar");
+	var txtMsg = document.getElementById("txtMsg");
+	var divResposta = document.getElementById("divResposta");
 	var socket;
-	status.textContent = "Not Connected";
-	close.disabled = true;
-	send.disabled = true;
+	
+	
+	
+	status.innerHTML = "NAO Conectado";
+	btnFechar.disabled = true;
+	btnEnviar.disabled = true;
 	// Create a new connection when the Connect button is clicked
-	open.addEventListener("click", function (event) {
-		open.disabled = true;
-		socket = new WebSocket("ws://localhost:8080");
+	btnConectar.addEventListener("click", function (event) {
+		btnConectar.disabled = true;
+		
+		//abrir  sockect
+		socket = new WebSocket("ws://localhost:9090");
+		
+		
+		//ao  abrir sockect
 		socket.addEventListener("open", function (event) {
-			close.disabled = false;
-			send.disabled = false;
-			status.textContent = "Connected";
+			btnFechar.disabled = false;
+			btnEnviar.disabled = false;
+			status.innerHTML = "Conectado";
 		});
 		 
-		// Display messages received from the server
+		//ao  receber  mensagem  do  servidot
 		socket.addEventListener("message", function (event) {
-			message.innerHTML   += "<br />Server Says: " + event.data;
+			divResposta.innerHTML   += "<br />servidor  enviou : " + event.data;
 		});
-		// Display any errors that occur
+		
+		//quando  ocorre orre no socket
 		socket.addEventListener("error", function (event) {
-			message.textContent = "Error: " + event;
+			divResposta.innerHTML = "Error: " + event;
 		});
+		
+		//quando fecha  o socket  usuario  
 		socket.addEventListener("close", function (event) {
-			open.disabled = false;
-			status.textContent = "Not Connected";
+			btnConectar.disabled = false;
+			status.innerHTML = "NAO Conectado";
 		});
 	});
-	// Close the connection when the Disconnect button is clicked
-	close.addEventListener("click", function (event) {
-		close.disabled = true;
-		send.disabled = true;
-		message.innerHTML = "";
+	
+	
+	
+ 
+	
+	// btn  fechar  sockect
+	btnFechar.addEventListener("click", function (event) {
+		btnFechar.disabled = true;
+		btnEnviar.disabled = true;
+		divResposta.innerHTML = "";
 		socket.close();
 	});
-	// Send text to the server when the Send button is clicked
-	send.addEventListener("click", function (event) {
-		socket.send(text.value);
-		text.value = "";
+	
+	// btn  enviar   mensagem  
+	btnEnviar.addEventListener("click", function (event) {
+		socket.send(txtMsg.value);
+		txtMsg.value = "";
 	});
 });
