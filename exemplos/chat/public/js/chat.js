@@ -94,7 +94,7 @@ var chat = (function() {
             // CONECTAR
             chat.view.btnConectar.addEventListener("click", function(event) {
 
-                if (chat.view.txtUsuario.value.trim() == "") {
+                if (chat.view.txtUsuario.value.trim() === "") {
                     alert("informe o  usuário");
                     return false;
                 }
@@ -116,14 +116,14 @@ var chat = (function() {
                     var dados = JSON.parse(event.data);
                     var acao = dados.acao;
                     console.log("recebeu  acao=" + acao);
-                    if (acao == "setarId") {
+                    if (acao === "setarId") {
                         chat.setarId(dados);
-                    } else if (acao == "recebeMsg") {
+                    } else if (acao === "recebeMsg") {
                         chat.recebeMsg(dados);
-                    } else if (acao == "adicionaUsuarioNalista" &&
-                        dados.objUsuario !== _id) {
+                    } else if (acao === "adicionaUsuarioNalista" &&
+                        dados.objUsuario.id !== _id) {
                         chat.addNaLista(dados.objUsuario);
-                    } else if (acao == "removeUsuarioDaLista") {
+                    } else if (acao === "removeUsuarioDaLista") {
                         chat.removeUsuarioDaLista(dados.idRemove);
                     }
                 });
