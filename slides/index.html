@@ -46,7 +46,7 @@
 						<img src="img/node.png" style="width:200px" />
 					</div>
 					<h3>INFOESTE 2015</h3>
-					
+
 					<p style="text-align:left">
 						<strong>Instrutor:</strong>
 						<br />Victor Hugo de Paiva Gonçales</p>
@@ -573,10 +573,10 @@ server.listen(8000, function () {
 				<section>
 					<h2>Express</h2>
 					<p> Express é framework WEB, que facilita  o desenvolvimento web com node,
-						ele lida  com views, rotas, cookies, sessions, e outras coisas de servidores. 
-						
+						ele lida  com views, rotas, cookies, sessions, e outras coisas de servidores.
+
 						</p>
-						
+
  <pre>
  <code data-trim  >
 npm install -g express
@@ -585,27 +585,27 @@ npm install express
 var express = require("express");
 var http = require("http");
 var app = express();
- 
+
 http.createServer(app).listen(8000);
 
  </code>
  </pre>
 				</section>
-				
-				
-				
+
+
+
 		        <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 
-				
+
 				<section>
 				<h2>Express - Middleware</h2>
 				<p> Middleware, são 'funções'  pré-processam  a  requisição,
 				por exemplo: parse de cookies, session, querystring, filtros etc...
-				
+
 				</p>
-				
+
 <pre>
 <code data-trim  >
 function middlewareX(req, resp next) {
@@ -623,85 +623,85 @@ app.use(middlewareX);
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 
-				
+
 				<section>
 				<h2>Express - Views</h2>
-				<p>  
+				<p>
 				   O Express  possibilita utilizar diversas engines de templates,
 				   devemos setar onde estão as views e qual  engine iremos  usar
-				
+
 				</p>
-				
+
 <pre>
 <code data-trim  >
 app.set("view engine", "ejs");
 app.set("views", "./views");
- 
+
 </code>
 </pre>
-				</section>				
-						
+				</section>
+
 		        <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 
-				
+
 				<section>
 				<h2>Express - Rotas</h2>
-				<p>  
+				<p>
 					Para delegar as  rotas  usamos o verbo HTTP (get/post/put/delete), nos nomes dos  métodos
-				
+
 				</p>
-				
+
 <pre>
 <code data-trim  >
 app.get("/a", function (req, res, next) {
  res.render("index", { xxxx : "oi index" });
-});	
+});
 
 app.post("/a/:id", function (req, res, next) {
  res.render("exibir", { msg :  "oi"});
-});	
+});
 
 </code>
 </pre>
-				</section>		
-				
-				
-				
-				
+				</section>
+
+
+
+
 		        <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
- 
-				
-				
+
+
+
 				<section>
 					<h2> Acesso a Base de Dados </h2>
-					<p> 
-						
-					Há  vários  tipos  de módulos que oferecem  suporte a base de dados 
+					<p>
+
+					Há  vários  tipos  de módulos que oferecem  suporte a base de dados
 					(MySql, MSSQL, Oracle, MongoDB, PostgreSQL entre  outros).
-						
+
 					</p>
-					
+
 
 				</section>
-				
-				
-				
-				
-				
-				
+
+
+
+
+
+
 					   <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 
-				
+
 				<section>
 			<h2> Acesso a Base de Dados  </h2>
-				<p>  
-									
+				<p>
+
 <pre>
 <code data-trim  >
 var mysql      = require('mysql');
@@ -715,95 +715,95 @@ connection.connect();
 
 connection.query('SELECT nome FROM  pesssoa ', function(err, rows, fields) {
   if (err) {throw err;}
-  
+
   console.log('nome : ', rows[0].nome);
 });
 
 connection.end();
 </code>
 </pre>
-				
+
 				</p>
-				
-				</section>			
-				
+
+				</section>
+
 			  <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 
-				
+
 				<section>
 				<h2> Aplicações REST </h2>
-				<p>  
-				   REST (REpresentational State Transfer) "Transferência de Estado Representacional", 
-				   é uma arquitetura de software para criação de API. 
+				<p>
+				   REST (REpresentational State Transfer) "Transferência de Estado Representacional",
+				   é uma arquitetura de software para criação de API.
 				   Utiliza os  verbos HTTP.<br />
 				   <ul>
 					   <li>GET</li>
 					   <li>POST</li>
 					   <li>PUT</li>
 					   <li>DELETE</li>
-					   
+
 				   </ul>
 				   http://www.restapitutorial.com/httpstatuscodes.html
-				    
-				
+
+
 				</p>
- 
-				</section>		
-	
-	
-	
-	
-	
-	
-	
+
+				</section>
+
+
+
+
+
+
+
 		  <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
-	
-	
-	
-	
-	
-				
+
+
+
+
+
+
 		    <section>
 				<h2>   express-generator  </h2>
-				<p>  
-				 
+				<p>
+
 					Gera   uma estrutura  básica  de  um projeto  express
 				</p>
 				<pre>
 <code data-trim  >
  npm install express-generator -g
- 
+
  express meu_app  --ejs
 </code>
 </pre>
-				
- 
-				</section>	
-	
+
+
+				</section>
+
 				  <!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
 				<!-- ###################################################################################### -->
-	
-	
-	
-	
-	
-				
+
+
+
+
+
+
 		    <section>
 				<h2> Comunicação em tempo real com WebSockets </h2>
-				<p>  
+				<p>
 				    WebSocket é  um  protocolo que  permite
 					comunicação  bidirecional  entre  cliente/servidor web
-					
-					
+
+
 				</p>
 
-				</section>	
-				
+				</section>
+
 								<section>
 					<h2> WebSockets - eventos no  Servidor</h2>
 					<p>
@@ -814,41 +814,41 @@ connection.end();
 <tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
 
 </tbody></table>
- 
-						
+
+
 					</p>
-					
+
 				</section>
-				
-				
+
+
 				<section>
-	
+
 <h2> WebSockets </h2>
 	<p>
 		<pre>
 <code data-trim  >
 var WebSocketServer = require('ws').Server
 var wss = new WebSocketServer({ port: 8080 });
- 
+
 wss.on('connection', function (ws) {
- 
+
   ws.on('message', function (dados) {
     console.log("recebeu: " + dados);
   });
   ws.on('error', function () {
-    
+
   });
- 
+
   ws.send('oi  client');
 });
 </code>
 		</pre>
-		
+
 	</p>
-	
+
 </section>
-				
-				
+
+
 				<section>
 					<h2> WebSockets - eventos no  cliente</h2>
 					<p>
@@ -859,27 +859,27 @@ wss.on('connection', function (ws) {
 <tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
 <tr><td>close</td><td>quando a  conexão fecha</td></tr>
 </tbody></table>
- 
-						
+
+
 					</p>
-					
+
 				</section>
 
 
 
 
-				
+
           <section>
 				<h2> Chat básico em tempo real</h2>
-				<p>  
+				<p>
 				  ...
-					
+
 				</p>
- 
-				</section>	
-				
-				
-				 
+
+				</section>
+
+
+
 				<section  >
 					<h1>FIM</h1>
 					<p> </p>
