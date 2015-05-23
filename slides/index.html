@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Introdução ao Node.js - Victor Hugo de Paiva Gonçales @victorvhpg</title>
+		<meta name="description" content="Introdução ao Node.js">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+			p{
+				text-align: justify;
+			}
+		</style>
+		<!--[if lt IE 9]>
+			<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- ###################################################################################### -->
+		<!-- <section>
+			<h2>titulo</h2>
+			<p>xxxxxxxxxxx</p>
+		</section>
+	   -->
+		<!-- ###################################################################################### -->
+		<div class="reveal">
+			<div class="slides">
+				<!-- ###################################################################################### -->
+				<section>
+					<h1>Introdução ao Node.js</h1>
+					<div>
+						<img src="img/node.png" style="width:200px" />
+					</div>
+					<h3>INFOESTE 2015</h3>
+
+					<p style="text-align:left">
+						<strong>Instrutor:</strong>
+						<br />Victor Hugo de Paiva Gonçales</p>
+					<div style="text-align:left">
+						<ul>
+							<li>
+								<a target="_blank" href="http://twitter.com/victorvhpg">@victorvhpg</a>
+							</li>
+							<li>
+								<a target="_blank" href="http://victorvhpg.github.io">victorvhpg.github.io</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>CONTEÚDO PROGRAMÁTICO</h2>
+					<div style='font-size:26px'>
+						<ul>
+							<li>Introdução</li>
+							<li>Conhecendo Node.js</li>
+							<li>io.js ?</li>
+							<li>Instalando Node.js</li>
+							<li>Conhecendo Sistema de Módulos</li>
+							<li>Criação de Módulos</li>
+							<li>NPM</li>
+							<li>Arquivo package.json</li>
+							<li>Importância de saber utilizar sistema de controle de versão - GIT</li>
+
+							<li>Programação Assíncrona (callbacks,Promises)</li>
+							<li>Eventos</li>
+							<li>Streams</li>
+							<li>Módulo http - WEB</li>
+							<li>Express</li>
+							<li>Acesso a Base de Dados</li>
+							<li>Aplicações REST</li>
+							<li>Comunicação em tempo real com WebSockets</li>
+							<li>Chat básico em tempo real</li>
+						</ul>
+					</div>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Introdução</h2>
+					<p>Atualmente o JavaScript é uma das linguagens de programação mais populares, está presente em diversos ambientes tais como
+						browsers, desktops, servidores, mobile, microcontroladores, "internet das coisas", TV e etc...
+						<br />No github JavaScript é de longe a linguagem mais
+						<a target="_target" href='https://github.com/search?o=desc&q=stars%3A%3E1&s=stars&type=Repositories'>popular</a>.
+						<br />Neste Minicurso será abordado o JavaScript no Servidor, através de Node.js</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Node.js é uma plataforma de desenvolvimento JavaScript para aplicações em rede(servidores), ideal para aplicações com milhares
+						de conexões simultâneas, é uma tecnologia open-source, multiplataforma (Mac, Windows, Linux), arquitetura orientada a eventos
+						e I/O não-bloqueante.
+						<br />Noje.js foi criado em 2009 por Ryan Dahl, e é patrocinado pela empresa Joyent*. Utiliza o Google V8 como engine Javascript.
+						<br /> Node.js vem ganhando adoção de grandes empresas como
+						<a href="https://engineering.linkedin.com/nodejs/blazing-fast-nodejs-10-performance-tips-linkedin-mobile"
+						target="_blank">LinkedIn</a>,
+						<a href="http://venturebeat.com/2012/01/24/why-walmart-is-using-node-js/" target="_blank">Wallmart</a>,
+						<a href="http://www.datacenterknowledge.com/archives/2013/12/06/need-speed-groupon-migrated-node-js/" target="_blank">Groupon</a>,
+						<a href="http://azure.microsoft.com/en-us/develop/nodejs/" target="_blank">Microsoft</a>,
+						<a href="http://techblog.netflix.com/2014/08/scaling-ab-testing-on-netflixcom-with_18.html" target="_blank">NetFlix</a>,
+						<a href="http://www.bbc.co.uk/blogs/internet/entries/47a96d23-ae04-444e-808f-678e6809765d.*" target="_blank">BBC</a>,
+						<a href="http://www.infoq.com/br/news/2013/12/paypal-java-javascript" target="_blank">Paypal</a> e
+						<a href="https://github.com/joyent/node/wiki/Projects%2C-Applications%2C-and-Companies-Using-Node" target="_blank">   muitas outras</a>
+						<br />
+						<br />
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Node.js roda de forma assíncrona com I/O não bloqueante, seu código roda numa única Thread, mas as operações I/O assíncronas
+						são feitas pelas Threads do S.O, É como se o Node ficasse em um loop esperando eventos do S.O, Node delega uma tarefa I/O
+						para o S.O. e já faz outra coisa, ele não bloqueia aguardando resposta I/O, você deve delegar um callback para ser executado
+						logo quando a tarefa I/O for concluída pelo S.O.</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p style="text-align:center">
+						<img src="img/threading_node.png" style="height:500px;margin:0 auto" />
+						<div style="font-size:14px">Fonte: What Makes Node.js Faster Than Java?
+							<br />
+							<a target="_blank" href='https://strongloop.com/strongblog/node-js-is-faster-than-java/'>
+								 https://strongloop.com/strongblog/node-js-is-faster-than-java/
+								 </a>
+						</div>
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Node.js</h2>
+					<p>Utilizado para:
+						<ul>
+							<li>Aplicações em tempo real (chat, games multiplayer, monitoramento)</li>
+							<li>Aplicações web/mobile</li>
+							<li>API de serviços REST / web Services - JSON</li>
+							<li>Processos de build</li>
+							<li>Automações de builds/deploy</li>
+							<li>Programas Desktop(NW, Electron), por exemplo Popcorn Time, Atom Editor, Visual Studio Code, Vivaldi Browser e outros</li>
+						</ul>
+					</p>
+					<p>Não é ideal para tarefas que requerem muito processo da CPU.</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>io.js ? Node.js Foundation?</h2>
+					<p  style='font-size:30px'>O io.js é um fork do Node.js, iniciado pelos principais developers do Node.js. E traz as últimas melhorias da linguagem,
+						API e últimas atualizações do V8. Projeto tem como objetivo continuar o desenvolvimento do io.js sob um "modelo de governança
+						aberto" em oposição à administração corporativa. Nos primeiros meses já atraiu mais desenvolvedores ativos que o projeto
+						Node.js teve em toda a sua história.<br />
+						UPDATE: em maio de 2015, o projeto  Node.js  e ios.js  se juntaram  e agora são "Node.js Foundation",
+						com  patrocinadores  como Linux Foundation, IBM, Microsoft, PayPal, Joyent e outros
+						</p>
+					<div style="text-align:center">
+						<img src="img/io.png" style='height:150px;border:none' />
+					</div>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Instalando Node.js</h2>
+					<p>A instalação do Node.js é muitos simples em todos os S.O.
+						<br />Acesse: https://nodejs.org/download/
+						<br />baixe e instale
+						<br />next...next...next...
+						<div style="text-align:center">
+							<img src="img/install.png" style='height:350px;border:none' />
+						</div>
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Instalando Node.js</h2>
+					<p>Após a instalação abra o prompt de comando e digite node
+						<br />
+						<ul>
+							<li>Objeto process</li>
+							<li>hello world</li>
+							<li>exemplos...</li>
+						</ul>
+					</p>
+				</section>
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<p>Node possui um sistema de módulos, que segue o padrão CommonJS, para carregar um módulo utiliza-se a função require( moduloId
+						), passando o caminho/id do módulo</p>
+					<pre>
+						<code data-trim>var os = require("os"); console.log("total de CPU:" + os.cpus().length);</code>
+					</pre>
+					<p>
+						Uma vez carregados eles  ficam em  cache.
+
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<p>Tipos de módulos:
+						<ul>
+							<li>Módulos nativos (fs,os, path, http,etc...)</li>
+							<li>Módulos criados (arquivos que nós criamos)</li>
+							<li>Módulos de terceiros (que estão na pasta node_modules)</li>
+						</ul>
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Conhecendo Sistema de Módulos</h2>
+					<div style="font-size:31px">
+					<p>No require() quando passamos o nome do módulo:</p>
+					<pre>
+						<code data-trim contenteditable>var nomeDoModulo = require("nomeDoModulo");</code>
+					</pre>
+					<p>Primeiro o node procura por um módulo nativo com este nome, caso não exista então ele busca na pasta node_modules, caso não
+						encontre então ele busca na pasta node_modules superior e assim por diante até encontrar
+						ou atingir a raiz do sistema. Quando
+						passamos um caminho relativo ou absoluto node então busca exatamente este módulo.</p>
+					<pre>
+						<code data-trim contenteditable>var nomeDoModulo = require("./teste/teste2/nomeDoModulo");</code>
+					</pre>
+					</div>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Criação de Módulos</h2>
+					<p>Para criar  um módulo apenas  atribuimos para a propriedade
+						 <i>module.exports</i>
+					</p>
+					<p>Exemplo:</p>
+					<pre>
+						<code data-trim  >
+//meu modulo
+var xxxx = "teste";
+
+module.exports = {
+	fazAlgo: function(){
+		return xxxx;
+	}
+};
+//ou
+exports.fazAlgo  = function(){
+	return xxxx;
+};
+						</code>
+					</pre>
+				</section>
+								<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Criação de Módulos</h2>
+
+					<p>Exemplo modulo com função construtora:</p>
+					<pre>
+						<code data-trim  >
+
+var MeuModuloComPrototype = function () {
+	this.teste = "teste....";
+};
+
+MeuModuloComPrototype.prototype.fazAlgo = function () {
+	return this.teste;
+};
+
+MeuModuloComPrototype.prototype.fazAlgoDiferente = function () {
+	return "fazAlgoDiferente";
+};
+
+module.exports = MeuModuloComPrototype;
+
+						</code>
+					</pre>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>NPM</h2>
+					<p>NPM  é  o  gerenciador de pacotes  do node, com ele é possível instalar
+						módulos criados por terceiros. Atualmente devido a popularidade do Node.js, o NPM
+						é o gerenciador de pacotes com maior  número de pacotes entre  todos de  outras principais linguagens.
+				       <br />Ele  já vem instalado  junto  com  o  node.<br />
+				   <a href="http://www.npmjs.com/" target="_blank" > www.npmjs.com </a>
+				   </p>
+
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>NPM</h2>
+					<p style="text-align:center">
+						<img src="img/npm.png"  />
+						<br />
+						http://www.modulecounts.com/
+
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>NPM</h2>
+					<p>
+						<ul style="font-size:28px">
+								<li>npm install :  instala todas  as  dependencias de  um projeto</li>
+								<li><strong> npm install nome_do_módulo</strong> : instala um módulo no projeto.</li>
+								<li> npm install -g nome_do_módulo : instala um módulo global.(disponível no prompt) </li>
+								<li> npm install nome_do_módulo --save : instala o módulo no projeto,atualizando o package.json na lista de dependências.</li>
+
+								<li> npm list : lista todos os módulos do projeto.</li>
+								<li> npm list -g : lista todos os módulos globais.</li>
+								<li> npm remove nome_do_módulo : desinstala um módulo do projeto.</li>
+								<li> npm remove -g nome_do_módulo : desinstala um módulo global.</li>
+								<li> npm update nome_do_módulo : atualiza a versão do módulo.</li>
+						</ul>
+
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Arquivo package.json</h2>
+					<p>É o arquivo  onde contém as configurações de seu  projeto/módulo,
+						ele é utilizado  pelo npm.
+						<br />
+
+						<br />
+
+
+						 </p>
+			<pre>
+						<code data-trim  >
+{
+  "name": "nome-do-projeto",
+  "version": "1.0.0",
+  "description": "exemplo de projeto",
+  "main": "index.js",
+  "scripts": {
+    "comando": "ls -la",
+    "start" : "node app.js"
+  },
+  "dependencies": {
+    "primus": "*",
+    "async": "~0.8.0",
+    "express": "4.2.x",
+    "winston": "git://github.com/flatiron/winston#master"
+  }
+}
+	 </code>
+					</pre>
+
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Versionamento</h2>
+					<p>
+				  Para controle do  número  da versão utiliza-se o padrão 'Semantic Versioning' <br />
+						X.X.X <br />
+					 MAJOR.MINOR.PATCH : <br />
+					é incrementado da  seguinte forma:
+
+				</p>
+
+<ul style="font-size:20px">
+
+	<li>MAJOR -  quando você faz  mudanças incompativeis com a versão anterior</li>
+	<li>MINOR -  quando você adiciona  novas  funcionalidades</li>
+	<li>PATCH -  quando você faz  correções de  bugs </li>
+
+</ul>
+<p style="font-size:19px">
+	~     atualizações a nível de Patch  <br />
+	^   atualizações a nível de Minor <br />
+	<br />
+ Patch releases: 1.0 or 1.0.x or ~1.0.4<br />
+Minor releases: 1 or 1.x or ^1.0.4<br />
+Major releases: * or x<br />
+<br />
+<a href='http://semver.npmjs.com/'  target="_blank" >http://semver.npmjs.com </a>
+</p>
+
+
+
+						<br />
+
+				</section>
+
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Importância de saber utilizar sistema de controle de versão - GIT</h2>
+					<p>GIT é um sistema de controle de versão, atualmente considerado o melhor existente e o mais
+						utilizado nos projetos.
+						<br />
+					  Hoje em  dia é fundamental qualquer desenvolvedor  ter pelo  menos o mínimo de  conhecimento
+					  de GIT.<br />
+
+						<br />
+					</p>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Programação Assíncrona (callbacks,Promises)</h2>
+					<p>Todas as  operações que  são assíncronas necessitam de  um callback,
+						que será chamado quando  a operação terminar.<br />
+						Convenciona-se  no node que o primeiro parametro do callback deve
+						ser o motivo do erro caso haja, depois  os  outros parâmetros podem ser  qualquer  coisa.<br />
+
+					</p>
+
+
+			<pre>
+						<code data-trim  >
+fs.readFile("message.txt", function (err, conteudo) {
+  if (err){
+     throw err;
+  }
+  console.log("conteudo do arquivo: " +conteudo);
+});
+
+	</code>
+					</pre>
+
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Promises</h2>
+					<p>Promises possibilita  trabalhar com operações assíncronas de uma outra maneira.
+					</p>
+								<pre>
+						<code data-trim  >
+function ler(arq) {
+	return new Promise(function (resolve, reject) {
+		fs.readFile(arq, function (err, conteudo) {
+			if (err) {
+				reject(err);
+				return;
+			}
+			resolve(conteudo);
+		});
+	});
+}
+
+ler("teste.txt").then(function (conteudo) {
+	console.log("PRO" + conteudo.toString());
+}).catch(function (err) {
+	console.log(err.message);
+});
+	</code>
+					</pre>
+
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Eventos</h2>
+					<p>O módulo  'events' possibilita nos  criarmos  nossos próprios eventos. </p>
+					<pre>
+			<code data-trim  >
+var EventEmitter = require("events").EventEmitter;
+
+var objEmitter = new EventEmitter();
+
+objEmitter.on("fezAlgo", function(a, b, c) {
+	console.log(a+b+c);
+});
+
+
+// Emit
+objEmitter.emit("fezAlgo", "aaa" , "bbb" , "ccc");
+				</code>
+								</pre>
+
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>Streams</h2>
+					<p> Com streams podemos  manipular o fluxo  de leitura/escrita de uma  maneira mais  performática. </p>
+					<pre>
+			<code data-trim  >
+var fs = require("fs");
+var readableStream = fs.createReadStream("teste.txt");
+var data = "";
+readableStream.on("data", function(chunk) {
+    data += chunk;
+});
+readableStream.on("end", function() {
+    console.log(data);
+});
+				</code>
+	</pre>
+				</section>
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<section>
+					<h2>	Módulo http - WEB</h2>
+					<p>
+				 Com node  você  que cria o seu  próprio
+				 servidor, usando  o módulo  http
+
+					</p>
+							<pre>
+							<code data-trim  >
+var http = require("http");
+var server = http.createServer(function (req, res) {
+	res.write(" oi ");
+	res.end("FIM");
+});
+server.listen(8000, function () {
+	console.log("servidor rodando na porta 8000");
+});
+							</code>
+							</pre>
+				</section>
+
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+					<h2>Express</h2>
+					<p> Express é framework WEB, que facilita  o desenvolvimento web com node,
+						ele lida  com views, rotas, cookies, sessions, e outras coisas de servidores.
+
+						</p>
+
+ <pre>
+ <code data-trim  >
+npm install -g express
+npm install express
+//===========================
+var express = require("express");
+var http = require("http");
+var app = express();
+
+http.createServer(app).listen(8000);
+
+ </code>
+ </pre>
+				</section>
+
+
+
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+				<h2>Express - Middleware</h2>
+				<p> Middleware, são 'funções'  pré-processam  a  requisição,
+				por exemplo: parse de cookies, session, querystring, filtros etc...
+
+				</p>
+
+<pre>
+<code data-trim  >
+function middlewareX(req, resp next) {
+
+	next();
+}
+
+app.use(middlewareX);
+
+
+</code>
+</pre>
+				</section>
+		   <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+				<h2>Express - Views</h2>
+				<p>
+				   O Express  possibilita utilizar diversas engines de templates,
+				   devemos setar onde estão as views e qual  engine iremos  usar
+
+				</p>
+
+<pre>
+<code data-trim  >
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+</code>
+</pre>
+				</section>
+
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+				<h2>Express - Rotas</h2>
+				<p>
+					Para delegar as  rotas  usamos o verbo HTTP (get/post/put/delete), nos nomes dos  métodos
+
+				</p>
+
+<pre>
+<code data-trim  >
+app.get("/a", function (req, res, next) {
+ res.render("index", { xxxx : "oi index" });
+});
+
+app.post("/a/:id", function (req, res, next) {
+ res.render("exibir", { msg :  "oi"});
+});
+
+</code>
+</pre>
+				</section>
+
+
+
+
+		        <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+
+				<section>
+					<h2> Acesso a Base de Dados </h2>
+					<p>
+
+					Há  vários  tipos  de módulos que oferecem  suporte a base de dados
+					(MySql, MSSQL, Oracle, MongoDB, PostgreSQL entre  outros).
+
+					</p>
+
+
+				</section>
+
+
+
+
+
+
+					   <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+			<h2> Acesso a Base de Dados  </h2>
+				<p>
+
+<pre>
+<code data-trim  >
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123456'
+});
+
+connection.connect();
+
+connection.query('SELECT nome FROM  pesssoa ', function(err, rows, fields) {
+  if (err) {throw err;}
+
+  console.log('nome : ', rows[0].nome);
+});
+
+connection.end();
+</code>
+</pre>
+
+				</p>
+
+				</section>
+
+			  <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+				<section>
+				<h2> Aplicações REST </h2>
+				<p>
+				   REST (REpresentational State Transfer) "Transferência de Estado Representacional",
+				   é uma arquitetura de software para criação de API.
+				   Utiliza os  verbos HTTP.<br />
+				   <ul>
+					   <li>GET</li>
+					   <li>POST</li>
+					   <li>PUT</li>
+					   <li>DELETE</li>
+
+				   </ul>
+				   http://www.restapitutorial.com/httpstatuscodes.html
+
+
+				</p>
+
+				</section>
+
+
+
+
+
+
+
+		  <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+
+
+
+
+		    <section>
+				<h2>   express-generator  </h2>
+				<p>
+
+					Gera   uma estrutura  básica  de  um projeto  express
+				</p>
+				<pre>
+<code data-trim  >
+ npm install express-generator -g
+
+ express meu_app  --ejs
+</code>
+</pre>
+
+
+				</section>
+
+				  <!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+				<!-- ###################################################################################### -->
+
+
+
+
+
+
+		    <section>
+				<h2> Comunicação em tempo real com WebSockets </h2>
+				<p>
+				    WebSocket é  um  protocolo que  permite
+					comunicação  bidirecional  entre  cliente/servidor web
+
+
+				</p>
+
+				</section>
+
+								<section>
+					<h2> WebSockets - eventos no  Servidor</h2>
+					<p>
+<table class="table table-bordered" style="font-size:24px">
+<tbody><tr><th width="10%">evento</th><th>descrição</th></tr>
+<tr><td>connection</td><td>quando a  conexão do  cliente  é  estabelecida  no servidor</td></tr>
+<tr><td>message</td><td>quando servidor  recebe um dado do  cliente </td></tr>
+<tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
+
+</tbody></table>
+
+
+					</p>
+
+				</section>
+
+
+				<section>
+
+<h2> WebSockets </h2>
+	<p>
+		<pre>
+<code data-trim  >
+var WebSocketServer = require('ws').Server
+var wss = new WebSocketServer({ port: 8080 });
+
+wss.on('connection', function (ws) {
+
+  ws.on('message', function (dados) {
+    console.log("recebeu: " + dados);
+  });
+  ws.on('error', function () {
+
+  });
+
+  ws.send('oi  client');
+});
+</code>
+		</pre>
+
+	</p>
+
+</section>
+
+
+				<section>
+					<h2> WebSockets - eventos no  cliente</h2>
+					<p>
+<table class="table table-bordered" style="font-size:24px">
+<tbody><tr><th width="10%">evento</th><th>descrição</th></tr>
+<tr><td>open</td><td>ocorre quando a  conexão  é  estabelecida</td></tr>
+<tr><td>message</td><td>quando cliente  recebe um dado do  servidor </td></tr>
+<tr><td>error</td><td>quando  ocorre  erro na  comunicação</td></tr>
+<tr><td>close</td><td>quando a  conexão fecha</td></tr>
+</tbody></table>
+
+
+					</p>
+
+				</section>
+
+
+
+
+
+          <section>
+				<h2> Chat básico em tempo real</h2>
+				<p>
+				  ...
+
+				</p>
+
+				</section>
+
+
+
+				<section  >
+					<h1>FIM</h1>
+					<p> </p>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'zoom', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+
+</html>
