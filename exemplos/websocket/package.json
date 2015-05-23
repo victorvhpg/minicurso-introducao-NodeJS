@@ -2,12 +2,11 @@
   "name": "websocket",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-   
-  },
+  "scripts": {},
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.12.4",
     "ws": "^0.7.2"
   }
 }
